@@ -3,26 +3,34 @@ buildscript {
         kotlin_version = '1.2.0'
         nebula_project_version = '3.4.0'
         nebula_release_version = '6.1.0'
+        node_plugin_version = '1.2.0'
     }
     repositories {
+        mavenCentral()
         jcenter()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
     }
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "com.netflix.nebula:nebula-project-plugin:$nebula_project_version"
         classpath "com.netflix.nebula:nebula-release-plugin:$nebula_release_version"
+        classpath "com.moowork.gradle:gradle-node-plugin:$node_plugin_version"
     }
 }
 
 apply plugin: 'kotlin2js'
 apply plugin: 'nebula.project'
 apply plugin: 'nebula.release'
+apply plugin: 'com.moowork.node'
 
 group = 'com.github.rivasdiaz'
 
 ext {
     gradle_version = '4.3.1'
     kotlin_react_version = '16.0.0-pre.13-kotlin-1.2.0'
+    kotlin_rmwc = '0.0.1'
 }
 
 repositories {
@@ -41,8 +49,37 @@ dependencies {
 
 compileKotlin2Js {
     kotlinOptions {
+        outputFile = "build/classes/main/kotlin-rmwc.js"
         moduleKind = 'commonjs'
         sourceMap = true
         sourceMapEmbedSources = 'always'
     }
 }
+
+task processPkg(type: Copy) {
+    from '.'
+    into 'build/npm'
+    include 'package.json'
+    expand(
+            kotlin_rmwc: "$kotlin_rmwc",
+            kotlin_version: "$kotlin_version"
+    )
+}
+
+task prepublish(type: Copy) {
+    from '.'
+    into 'build/npm'
+    exclude 'package.json'
+    exclude 'build/npm'
+}
+
+npm_publish {
+    args = ['--access', 'public']
+    execOverrides {
+        it.workingDir = 'build/npm'
+    }
+}
+
+npm_publish.dependsOn prepublish
+npm_publish.dependsOn processPkg
+prepublish.dependsOn build
