@@ -10,7 +10,7 @@
   "repository": "https://github.com/rivasdiaz/kotlin-rmwc",
   "peerDependencies": {
     "kotlin": "^$kotlin_version",
-    "rmwc": "1.8.3"
+    "rmwc": "1.8.3",
     "react": ">=15.x.x <=16.x.x"
   },
   "author": "Rivas Diaz",
