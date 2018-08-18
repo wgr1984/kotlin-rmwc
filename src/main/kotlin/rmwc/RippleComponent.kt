@@ -1,10 +1,7 @@
 @file:JsModule("rmwc/Ripple")
 package rmwc
 
-import react.RProps
-import react.RState
-import react.React
-import react.ReactElement
+import react.*
 
 external interface RippleProps: RProps {
 
@@ -19,6 +16,6 @@ external interface RippleProps: RProps {
 }
 
 @JsName("Ripple")
-external class RippleComponent: React.Component<RippleProps, RState> {
+external class RippleComponent: Component<RippleProps, RState> {
     override fun render(): ReactElement
 }

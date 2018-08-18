@@ -1,8 +1,8 @@
 @file:JsModule("rmwc/Fab")
 package rmwc
 
+import react.Component
 import react.RState
-import react.React
 import react.ReactElement
 
 external interface FabRootProps: SimpleTagProps, WithRippleProps {
@@ -14,6 +14,6 @@ external interface FabRootProps: SimpleTagProps, WithRippleProps {
 external interface FabProps: FabRootProps
 
 @JsName("Fab")
-external class FabComponent: React.Component<FabProps, RState> {
+external class FabComponent: Component<FabProps, RState> {
     override fun render(): ReactElement
 }

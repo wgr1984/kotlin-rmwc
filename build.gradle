@@ -29,8 +29,8 @@ group = 'com.github.rivasdiaz'
 
 ext {
     gradle_version = '4.3.1'
-    kotlin_react_version = '16.0.0-pre.13-kotlin-1.2.0'
-    kotlin_rmwc = '0.0.1'
+    kotlin_react_version = '16.3.1-pre.27-kotlin-1.2.30'
+    kotlin_rmwc = '0.0.3'
 }
 
 repositories {

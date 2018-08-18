@@ -1,8 +1,8 @@
 @file:JsModule("rmwc/Snackbar")
 package rmwc
 
+import react.Component
 import react.RState
-import react.React
 import react.ReactElement
 
 external interface SnackbarRootProps: SimpleTagProps {
@@ -42,6 +42,6 @@ external interface SnackbarProps: SnackbarRootProps {
 }
 
 @JsName("Snackbar")
-external class SnackbarComponent: React.Component<SnackbarProps, RState> {
+external class SnackbarComponent: Component<SnackbarProps, RState> {
     override fun render(): ReactElement
 }

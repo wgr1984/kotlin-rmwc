@@ -1,12 +1,12 @@
 @file:JsModule("rmwc/Grid")
 package rmwc
 
+import react.Component
 import react.RState
-import react.React
 import react.ReactElement
 
 @JsName("Grid")
-external class GridComponent: React.Component<SimpleTagProps, RState> {
+external class GridComponent: Component<SimpleTagProps, RState> {
     override fun render(): ReactElement
 }
 
@@ -18,6 +18,6 @@ external interface GridCellProps: SimpleTagProps {
 }
 
 @JsName("GridCell")
-external class GridCellComponent: React.Component<GridCellProps, RState> {
+external class GridCellComponent: Component<GridCellProps, RState> {
     override fun render(): ReactElement
 }

@@ -1,8 +1,8 @@
 @file:JsModule("rmwc/Button")
 package rmwc
 
+import react.Component
 import react.RState
-import react.React
 import react.ReactElement
 
 external interface ButtonProps: SimpleTagProps, WithRippleProps {
@@ -24,6 +24,6 @@ external interface ButtonProps: SimpleTagProps, WithRippleProps {
 }
 
 @JsName("Button")
-external class ButtonComponent: React.Component<ButtonProps, RState> {
+external class ButtonComponent: Component<ButtonProps, RState> {
     override fun render(): ReactElement
 }

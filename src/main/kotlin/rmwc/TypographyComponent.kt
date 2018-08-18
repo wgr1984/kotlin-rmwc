@@ -1,8 +1,8 @@
 @file:JsModule("rmwc/Typography")
 package rmwc
 
+import react.Component
 import react.RState
-import react.React
 import react.ReactElement
 
 external interface TypographyProps: SimpleTagProps {
@@ -15,6 +15,6 @@ external interface TypographyProps: SimpleTagProps {
 }
 
 @JsName("Typography")
-external class TypographyComponent: React.Component<TypographyProps, RState> {
+external class TypographyComponent: Component<TypographyProps, RState> {
     override fun render(): ReactElement
 }
